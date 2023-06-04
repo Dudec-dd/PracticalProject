@@ -16,23 +16,18 @@ using System.Windows.Shapes;
 namespace PracticalProject
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для AddPage.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class AddPage : Page
     {
-        public Page1()
+        public AddPage()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTBox.Text == "1" && PasswordTBox.Text == "1")
-            {
-                NavigationService.Navigate(new AdminPage());
-            }
-            else if (LoginTBox.Text == "2" && PasswordTBox.Text == "2") NavigationService.Navigate(new UserPage());
+
         }
-        
     }
 }
