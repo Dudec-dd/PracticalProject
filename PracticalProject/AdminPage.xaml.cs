@@ -48,16 +48,21 @@ namespace PracticalProject
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EditPage());
+            //NavigationService.Navigate(new EditPage());
             gridSelectedItem = DataG.SelectedItem as Item;
+            List<string> strings = new List<string>();
+            strings.Add("312321");
+            strings.Add("4325");
+            strings.Add("312321");
+            strings.Add("234451");
+            strings.Add("4236471");
+            combobox.ItemsSource = strings;
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             DataBase dataBase = new DataBase();
-            
             string selstring = $"select Name, Surname from Login where Name = '4325' AND Surname = '34645'";
             SqlCommand sqlcmd = new SqlCommand(selstring, dataBase.getConnection());
-            
             List<string> a = dataBase.getListFromCommand(sqlcmd); 
             somebox.Text = a[0];
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -78,8 +83,6 @@ namespace PracticalProject
     {
         public string Name { get; set; }
         public string Surname { get; set; }
-
-        
     }
 
 }
