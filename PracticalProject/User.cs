@@ -17,7 +17,7 @@ namespace PracticalProject
         public string name { get; set; }
         public string surename { get; set; }
         public DateTime birthdayDate { get; set; }
-        public string log { get; set; }
+        public string login { get; set; }
         public string password {get; set; }
         public string role { get; set; }
 
@@ -26,7 +26,7 @@ namespace PracticalProject
             name = n;
             surename = sN;
             birthdayDate = birthD;
-            log = l;
+            login = l;
             password = psw;
             role = r;
         }
@@ -34,7 +34,7 @@ namespace PracticalProject
         {
             DataBase dataBase = new DataBase();
             string sqlFormattedDate = birthdayDate.Date.ToString("yyyy-MM-dd");
-            string regstring = $"insert into Users(UserID, Name, Surname, BirthdayDate, Login, Password, Role) values ({LengthOfUsersTable()+1},'{name}', '{surename}', '{sqlFormattedDate}', '{log}', '{password}', '{role}')";
+            string regstring = $"insert into Users(UserID, Name, Surname, BirthdayDate, Login, Password, Role) values ({GetUserCount()+1},'{name}', '{surename}', '{sqlFormattedDate}', '{login}', '{password}', '{role}')";
             SqlCommand cmd = new SqlCommand(regstring, dataBase.getConnection());
             dataBase.openConnection();
             if (cmd.ExecuteNonQuery() == 1) { MessageBox.Show("Done"); }
@@ -61,11 +61,20 @@ namespace PracticalProject
         }
         public List<User> GetListOfAllUsers()
         {
-
+            DataBase dataBase = new DataBase();
             List<User> users = new List<User>();
+            string reqstring = $"select * from Users";
+            SqlCommand cmd = new SqlCommand(reqstring, dataBase.getConnection());
+            dataBase.openConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(dataTable);
+            dataBase.closeConnection();
+            
             return users;
         }
-        public int LengthOfUsersTable()
+        public int GetUserCount()
         {
             DataBase dataBase = new DataBase();
             string reqstring = $"select * from Users";
