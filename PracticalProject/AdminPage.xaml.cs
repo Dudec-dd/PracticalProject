@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlTypes;
 
 namespace PracticalProject
 {
@@ -36,16 +39,11 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Item> list = new List<Item>();
-            Item item = new Item(1, "Some Content");
-            for (int i = 0; i < 25; i++)
-            {
-                list.Add(new Item(i, $"{i + 10}"));
-            }
-            list.Add(item);
             
-            list.Add(new Item(5, "ewkgfd"));
-            DataG.ItemsSource = list;
+            var ndate = new DateTime(2004, 6, 19);
+            User user = new User("Andrew", "Zvyagin", ndate, "Phoenix", "123", "admin");
+            if (user.IsUserInDataBase("Phoenix","123")) MessageBox.Show("Такой пользователь уже есть в системе!");
+            else user.addUserInDataBase();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -55,7 +53,18 @@ namespace PracticalProject
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataG.ItemsSource = new int[1];
+            DataBase dataBase = new DataBase();
+            
+            string selstring = $"select Name, Surname from Login where Name = '4325' AND Surname = '34645'";
+            SqlCommand sqlcmd = new SqlCommand(selstring, dataBase.getConnection());
+            
+            List<string> a = dataBase.getListFromCommand(sqlcmd); 
+            somebox.Text = a[0];
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable();
+            adapter.SelectCommand = sqlcmd;
+            adapter.Fill(dataTable);
+            DataG.ItemsSource = dataTable.Select();
         }
 
         private void DataG_MouseUp(object sender, MouseButtonEventArgs e)
@@ -67,17 +76,10 @@ namespace PracticalProject
     }
     public class Item
     {
-        public int num { get; set; }
-        public string val { get; set; }
-        public Item(int n,string Val)
-        {
-            num = n;
-            val = Val;
-        }
-        public Item()
-        {
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
-        }
+        
     }
 
 }

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MinHeight="350" MinWidth="600">
+    
     <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"></Frame>
 </Window>
