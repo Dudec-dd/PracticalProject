@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Data.SqlClient;
+using System.Data;
+
 namespace PracticalProject
 {
     /// <summary>
@@ -20,6 +24,8 @@ namespace PracticalProject
     /// </summary>
     public partial class Page1 : Page
     {
+        DataBase dataBase = new DataBase();
+        int counter = 0;
         public Page1()
         {
             InitializeComponent();

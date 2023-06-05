@@ -32,9 +32,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Войти" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="3" Click="Button_Click" FontSize="17" FontFamily="Arial" ></Button>
-        <TextBox Name="PasswordTBox" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3"></TextBox>
-        <TextBox Name="LoginTBox" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3"></TextBox>
-        <Label Content="Password" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Center"></Label>
-        <Label Content="Login" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Center"></Label>
+        <TextBox Name="PasswordTBox" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" FontSize="17" FontFamily="Arial" VerticalAlignment="Top"/>
+        <TextBox Name="LoginTBox" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" FontSize="17" FontFamily="Arial" VerticalAlignment="Top"></TextBox>
+        <Label Content="Password" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Bottom"></Label>
+        <Label Content="Login" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Bottom"></Label>
     </Grid>
 </Page>

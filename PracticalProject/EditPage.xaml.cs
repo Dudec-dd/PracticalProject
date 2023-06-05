@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace PracticalProject
     /// </summary>
     public partial class EditPage : Page
     {
+
+        DataBase dataBase = new DataBase();
         public EditPage()
         {
             InitializeComponent();
@@ -28,8 +32,12 @@ namespace PracticalProject
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             AdminPage page = new AdminPage();
-            Item s = page.GetSelecktedItem();
-            TBox.Text = s.val;
+            string[] mass = TBox.Text.Split();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable();
+            
+            
+
         }
     }
 
