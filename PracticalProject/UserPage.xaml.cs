@@ -20,6 +20,7 @@ namespace PracticalProject
     /// </summary>
     public partial class UserPage : Page
     {
+        Resource resource = new Resource();
         public UserPage()
         {
             InitializeComponent();
@@ -27,15 +28,28 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DataG.SelectedItem != null)
+            {   
+                resource.SetSelectedRescource(DataG.SelectedItems as Resource);
+                NavigationService.Navigate(new AddRescourcePage());
+            }
+            else
+            {
+                MessageBox.Show("Выберите значение в таблице");
+            }
+            
         }
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (DataG.SelectedItem != null)
+            {
+                resource.SetSelectedRescource(DataG.SelectedItems as Resource);
+                NavigationService.Navigate(new DecreaseResourcePage());
+            }
+            else
+            {
+                MessageBox.Show("Выберите значение в таблице");
+            }
         }
 
     }

@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
 
-    <Grid Background="WhiteSmoke">
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -31,6 +31,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <DatePicker></DatePicker>
         <Button Content="Войти" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="3" Click="Button_Click" FontSize="17" FontFamily="Arial" ></Button>
         <TextBox Name="PasswordTBox" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" FontSize="17" FontFamily="Arial" VerticalAlignment="Top"/>
         <TextBox Name="LoginTBox" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" FontSize="17" FontFamily="Arial" VerticalAlignment="Top"></TextBox>

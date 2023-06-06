@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.SqlServer.Server;
 
 namespace PracticalProject
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для DecreaseResourcePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DecreaseResourcePage : Page
     {
-        public MainWindow()
+        public DecreaseResourcePage()
         {
             InitializeComponent();
-            MainFrame.Content = new Page1();
-            
         }
     }
 }

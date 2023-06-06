@@ -24,8 +24,7 @@ namespace PracticalProject
     /// </summary>
     public partial class Page1 : Page
     {
-        DataBase dataBase = new DataBase();
-        int counter = 0;
+        User user = new User();
         public Page1()
         {
             InitializeComponent();
@@ -33,11 +32,20 @@ namespace PracticalProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTBox.Text == "1" && PasswordTBox.Text == "1")
+            NavigationService.Navigate(new UserPage());
+            MessageBox.Show("123");
+            /*switch (user.GetUserRole(LoginTBox.Text, PasswordTBox.Text))
             {
-                NavigationService.Navigate(new AdminPage());
-            }
-            else if (LoginTBox.Text == "2" && PasswordTBox.Text == "2") NavigationService.Navigate(new UserPage());
+                case "Admin":
+                    NavigationService.Navigate(new AdminPage());
+                    break;
+                case "Manager":
+                    NavigationService.Navigate(new ManagerPage());
+                    break;
+                case "User":
+                    NavigationService.Navigate(new UserPage());
+                    break;
+            }*/
         }
         
     }

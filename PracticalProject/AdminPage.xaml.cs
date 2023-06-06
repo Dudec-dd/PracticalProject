@@ -24,52 +24,23 @@ namespace PracticalProject
     public partial class AdminPage : Page
     {
 
-        public static Item gridSelectedItem { get; set; }
-        public Item GetSelecktedItem()
-        {
-            return gridSelectedItem;
-        }
+        
         public AdminPage()
         {
 
             InitializeComponent();
-           
         }
         
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            var ndate = new DateTime(2004, 6, 19);
-            User user = new User("Andrew", "Zvyagin", ndate, "Phoenix", "123", "admin");
-            if (user.IsUserInDataBase("Phoenix","123")) MessageBox.Show("Такой пользователь уже есть в системе!");
-            else user.addUserInDataBase();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new EditPage());
-            gridSelectedItem = DataG.SelectedItem as Item;
-            List<string> strings = new List<string>();
-            strings.Add("312321");
-            strings.Add("4325");
-            strings.Add("312321");
-            strings.Add("234451");
-            strings.Add("4236471");
-            combobox.ItemsSource = strings;
+            NavigationService.Navigate(new AddUserPage());
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataBase dataBase = new DataBase();
-            string selstring = $"select Name, Surname from Login where Name = '4325' AND Surname = '34645'";
-            SqlCommand sqlcmd = new SqlCommand(selstring, dataBase.getConnection());
-            List<string> a = dataBase.getListFromCommand(sqlcmd); 
-            somebox.Text = a[0];
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
-            adapter.SelectCommand = sqlcmd;
-            adapter.Fill(dataTable);
-            DataG.ItemsSource = dataTable.Select();
+            User selectedUser = DataG.SelectedItem as User;
+            selectedUser.removeUserFromDataBase(selectedUser.login,selectedUser.password);
+            MessageBox.Show("Пользователь удалён!");
         }
 
         private void DataG_MouseUp(object sender, MouseButtonEventArgs e)
@@ -77,7 +48,11 @@ namespace PracticalProject
 
         }
 
-        
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            //DataG.ItemsSource = user.GetListOfAllUsers();
+        }
     }
     public class Item
     {
