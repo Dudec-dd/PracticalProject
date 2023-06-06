@@ -35,6 +35,6 @@
         <Label Content="Количество" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Background="#FFFFFFFF"></Label>
         <TextBox Name="NameTBox" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="20"></TextBox>
         <TextBox Name="QuantityTBox" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="20"></TextBox>
-        <Button Grid.Column="4" Grid.Row="6" Content="Уменьшить" FontFamily="Arial" FontSize="20"></Button>
+        <Button Grid.Column="4" Grid.Row="6" Content="Уменьшить" FontFamily="Arial" FontSize="20" Click="Button_Click"></Button>
     </Grid>
 </Page>

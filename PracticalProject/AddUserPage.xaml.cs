@@ -27,8 +27,8 @@ namespace PracticalProject
 
         private void NameTBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(NameTBox.Text == "Введите имя")
-            NameTBox.Text = "";
+            if (NameTBox.Text == "Введите имя")
+                NameTBox.Text = "";
         }
 
         private void SurNameTBox_GotFocus(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace PracticalProject
 
         private void NameTBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if(NameTBox.Text == "") NameTBox.Text = "Введите имя";
+            if (NameTBox.Text == "") NameTBox.Text = "Введите имя";
         }
 
         private void SurNameTBox_LostFocus(object sender, RoutedEventArgs e)
@@ -71,9 +71,11 @@ namespace PracticalProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(NameTBox.Text !="" && SurNameTBox.Text !="" && DateTBox.Text !="" && LoginTBox.Text!=""&& PasswordTBox.Text!="" && roleCBox.SelectedItem.ToString() != "") { 
-            User user = new User(NameTBox.Text, SurNameTBox.Text, DateTime.Parse(DateTBox.Text), LoginTBox.Text, PasswordTBox.Text, roleCBox.SelectedItem.ToString());
-            user.addUserInDataBase();
+            if (NameTBox.Text != "" && SurNameTBox.Text != "" && DateTBox.Text != "" && LoginTBox.Text != "" && PasswordTBox.Text != "" && roleCBox.SelectedItem.ToString() != "")
+            {
+                User user = new User(NameTBox.Text, SurNameTBox.Text, DateTime.Parse(DateTBox.Text), LoginTBox.Text, PasswordTBox.Text, roleCBox.SelectedItem.ToString());
+                user.addUserInDataBase();
+                NavigationService.Navigate(new AdminPage());
             }
             else
             {

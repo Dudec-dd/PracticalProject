@@ -24,5 +24,20 @@ namespace PracticalProject
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(NameTBox.Text != "" && QuantityTBox.Text != "" && Int32.TryParse(QuantityTBox.Text,out int x))
+            {
+                Resource resource = new Resource();
+                resource.removeResourceFromDataBase(NameTBox.Text, Int32.Parse(QuantityTBox.Text));
+                MessageBox.Show("Выполненно!");
+                NavigationService.Navigate(new UserPage());
+            }
+            else
+            {
+                MessageBox.Show("Ошибка ввода!");
+            }
+        }
     }
 }

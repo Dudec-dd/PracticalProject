@@ -38,26 +38,24 @@ namespace PracticalProject
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            if(DataG.SelectedItem != null) { 
             User selectedUser = DataG.SelectedItem as User;
             selectedUser.removeUserFromDataBase(selectedUser.login,selectedUser.password);
             MessageBox.Show("Пользователь удалён!");
+            }
+            else
+            {
+                MessageBox.Show("Выберите значение в таблице");
+            }
         }
 
-        private void DataG_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             User user = new User();
             //DataG.ItemsSource = user.GetListOfAllUsers();
         }
-    }
-    public class Item
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
     }
 
 }

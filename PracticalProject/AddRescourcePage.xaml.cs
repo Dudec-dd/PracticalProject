@@ -71,6 +71,7 @@ namespace PracticalProject
             {
                 Resource resource = new Resource(NotationTBox.Text, Int32.Parse(QuantityTBox.Text), NotationTBox.Text, DateTime.Parse(GetDatePicker.Text), DateTime.Parse(GetExpirationDatePicker.Text), float.Parse(PriceTBox.Text));
                 resource.AddRescorceInDataBase();
+                NavigationService.Navigate(new UserPage());
             }
             else
             {
