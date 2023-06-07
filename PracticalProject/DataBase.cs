@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows;
 
 namespace PracticalProject
 {
     class DataBase
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Server=192.168.0.11,1433;Database=TestDb;User Id =sa; password= sa");
+        SqlConnection sqlConnection = new SqlConnection(@"Server=192.168.0.12,1433;Database=PracticalDb;User Id =Admin; password= sa");
 
 
         public void openConnection()
@@ -49,5 +50,6 @@ namespace PracticalProject
             this.closeConnection();
             return list;
         }
+        
     }
 }

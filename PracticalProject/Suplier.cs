@@ -16,7 +16,7 @@ namespace PracticalProject
         public string organizationName { get; set; }
         public string adress { get; set; }
         public string phoneNumber { get; set; }
-        public string rescource { get; set; }
+        public string resource { get; set; }
         public float price { get; set; }
 
         public Suplier(string orgName, string a, string pNum, string resc, float p)
@@ -24,7 +24,7 @@ namespace PracticalProject
             organizationName = orgName;
             adress = a;
             phoneNumber = pNum;
-            rescource = resc;
+            resource = resc;
             price = p;
         }
         public Suplier() { }
@@ -44,12 +44,12 @@ namespace PracticalProject
             {
                 DataRow row = dataTable.Rows[j];
                 List<string> list = new List<string>();
-                for (int i = 0; i < row.ItemArray.Length; i++)
+                for (int i = 1; i < row.ItemArray.Length; i++)
                 {
-                    list[i] = row.ItemArray[i].ToString();
+                    list.Add(row.ItemArray[i].ToString());
                 }
 
-                Supliers[j] = new Suplier(list[0], list[1], list[2], list[3], float.Parse(list[4]));
+                Supliers.Add(new Suplier(list[0], list[1], list[2], list[3], float.Parse(list[4])));
             }
             return Supliers;
         }
@@ -63,18 +63,17 @@ namespace PracticalProject
             }
             else
             {
-                string regstring = $"insert into Suplier(SuplierID, OrganizationName, Adress, PhoneNumber, Rescource, Price) values ({GetSuplierCount() + 1},'{organizationName}', '{adress}', '{phoneNumber}', '{rescource}', {price})";
+                string regstring = $"insert into Supliers(SuplierID, OrganizationName, Adress, PhoneNumber, Resource, Price) values ({GetSuplierCount() + 1},'{organizationName}', '{adress}', '{phoneNumber}', '{resource}', {price})";
                 SqlCommand cmd = new SqlCommand(regstring, dataBase.getConnection());
                 dataBase.openConnection();
-                if (cmd.ExecuteNonQuery() == 1) { MessageBox.Show("Done"); }
-                else { MessageBox.Show("error"); }
+                cmd.ExecuteNonQuery();
                 dataBase.closeConnection();
             }
         }
         public Boolean IsSuplierInDataBase(string orgname, string adress)
         {
             DataBase dataBase = new DataBase();
-            string reqstring = $"select * from Suplier where login = '{orgname}' AND password = '{adress}'";
+            string reqstring = $"select * from Supliers where OrganizationName = '{orgname}' AND Adress = '{adress}'";
             SqlCommand cmd = new SqlCommand(reqstring, dataBase.getConnection());
             dataBase.openConnection();
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -102,11 +101,32 @@ namespace PracticalProject
             dataBase.closeConnection();
             return dataTable.Rows.Count;
         }
-        public void removeUserFromDataBase(string orgname, string resc)
+        public void removeSuplierFromDataBase(string orgname, string resc)
         {
             DataBase dataBase = new DataBase();
-            string reqstring = $"DELETE FROM Supliers WHERE login = '{orgname}' AND password ='{resc}' LIMIT 1;";
+            string reqstring = $"DELETE FROM Supliers WHERE OrganizationName = '{orgname}' AND Resource ='{resc}'";
             SqlCommand cmd = new SqlCommand(reqstring, dataBase.getConnection());
+            dataBase.openConnection();
+            cmd.ExecuteNonQuery();
+            dataBase.closeConnection();
+        }
+        public List<string> GetSuplierNames()
+        {
+            DataBase dataBase = new DataBase();
+            string reqstring = $"select * from Supliers";
+            SqlCommand cmd = new SqlCommand(reqstring, dataBase.getConnection());
+            dataBase.openConnection();
+            List<string> list = new List<string>();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(dataTable);
+            dataBase.closeConnection();
+            foreach(DataRow row in dataTable.Rows)
+            {
+                list.Add(row[1].ToString());
+            }
+            return list;
         }
     }
 }

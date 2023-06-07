@@ -48,16 +48,18 @@ namespace PracticalProject
                 string regstring = $"insert into Users(UserID, Name, Surname, BirthdayDate, Login, Password, Role) values ({GetUserCount() + 1},'{name}', '{surename}', '{birthdayDate}', '{login}', '{password}', '{role}')";
                 SqlCommand cmd = new SqlCommand(regstring, dataBase.getConnection());
                 dataBase.openConnection();
-                if (cmd.ExecuteNonQuery() == 1) { MessageBox.Show("Done"); }
-                else { MessageBox.Show("error"); }
+                cmd.ExecuteNonQuery();
                 dataBase.closeConnection();
             }
         }
         public void removeUserFromDataBase(string login, string password)
         {
             DataBase dataBase = new DataBase();
-            string reqstring = $"DELETE FROM users WHERE login = '{login}' AND password ='{password}' LIMIT 1;";
+            string reqstring = $"DELETE FROM Users WHERE Login = '{login}' AND Password ='{password}'";
             SqlCommand cmd = new SqlCommand(reqstring,dataBase.getConnection());
+            dataBase.openConnection();
+            cmd.ExecuteNonQuery();
+            dataBase.closeConnection();
         }
         public Boolean IsUserInDataBase(string login, string pass)
         {
@@ -115,12 +117,12 @@ namespace PracticalProject
             {
                 DataRow row = dataTable.Rows[j];
                 List<string> list = new List<string>();
-                for (int i = 0; i < row.ItemArray.Length; i++)
+                for (int i = 1; i < row.ItemArray.Length; i++)
                 {
-                    list[i] = row.ItemArray[i].ToString();
+                    list.Add(row.ItemArray[i].ToString()) ;
                 }
 
-                users[j] = new User(list[0], list[1], DateTime.Parse(list[2]), list[3], list[4], list[5]);
+                users.Add(new User(list[0], list[1], DateTime.Parse(list[2]), list[3], list[4], list[5]));
             }
             return users;
         }
