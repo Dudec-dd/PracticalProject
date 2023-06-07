@@ -29,12 +29,12 @@ namespace PracticalProject
         {
             InitializeComponent();
         }
-
+        //NavigationService.Navigate(new UserPage());
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UserPage());
+            
             MessageBox.Show("123");
-            /*switch (user.GetUserRole(LoginTBox.Text, PasswordTBox.Text))
+            switch (user.GetUserRole(LoginTBox.Text, PasswordTBox.Text))
             {
                 case "Admin":
                     NavigationService.Navigate(new AdminPage());
@@ -45,7 +45,7 @@ namespace PracticalProject
                 case "User":
                     NavigationService.Navigate(new UserPage());
                     break;
-            }*/
+            }
         }
         
     }

@@ -67,9 +67,9 @@ namespace PracticalProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Int32.TryParse(QuantityTBox.Text,out int a) && NameTBox.Text != "" && NotationTBox.Text != "" && QuantityTBox.Text != "" && PriceTBox.Text !="" && GetDatePicker.Text !="" && GetExpirationDatePicker.Text != "" && float.TryParse(PriceTBox.Text,out float x))
+            if (Int32.TryParse(QuantityTBox.Text,out int a) && NameTBox.Text != ""&& SuplierCBox.SelectedItem != null && NotationTBox.Text != "" && QuantityTBox.Text != "" && PriceTBox.Text !="" && GetDatePicker.Text !="" && GetExpirationDatePicker.Text != "" && float.TryParse(PriceTBox.Text,out float x))
             {
-                Resource resource = new Resource(NotationTBox.Text, Int32.Parse(QuantityTBox.Text), NotationTBox.Text, DateTime.Parse(GetDatePicker.Text), DateTime.Parse(GetExpirationDatePicker.Text), float.Parse(PriceTBox.Text));
+                Resource resource = new Resource(NotationTBox.Text, Int32.Parse(QuantityTBox.Text), NotationTBox.Text,SuplierCBox.SelectedItem.ToString(), DateTime.Parse(GetDatePicker.Text), DateTime.Parse(GetExpirationDatePicker.Text), float.Parse(PriceTBox.Text));
                 resource.AddRescorceInDataBase();
                 NavigationService.Navigate(new UserPage());
             }
@@ -77,6 +77,13 @@ namespace PracticalProject
             {
                 MessageBox.Show("Ошибка ввода данных!");
             }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Suplier suplier = new Suplier();
+            List<string> list = suplier.GetSuplierNames();
+            SuplierCBox.ItemsSource = list;
         }
     }
 }

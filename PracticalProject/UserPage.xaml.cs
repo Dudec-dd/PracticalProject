@@ -28,22 +28,15 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataG.SelectedItem != null)
-            {   
-                resource.SetSelectedRescource(DataG.SelectedItems as Resource);
+            
                 NavigationService.Navigate(new AddRescourcePage());
-            }
-            else
-            {
-                MessageBox.Show("Выберите значение в таблице");
-            }
             
         }
         private void DecreaseButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataG.SelectedItem != null)
             {
-                resource.SetSelectedRescource(DataG.SelectedItems as Resource);
+                resource.SetSelectedRescource(DataG.SelectedItem as Resource);
                 NavigationService.Navigate(new DecreaseResourcePage());
             }
             else
@@ -52,5 +45,10 @@ namespace PracticalProject
             }
         }
 
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Resource resource = new Resource();
+            DataG.ItemsSource = resource.GetListOfAllResources();
+        }
     }
 }

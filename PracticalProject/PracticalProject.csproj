@@ -58,6 +58,9 @@
     <Compile Include="AddRescourcePage.xaml.cs">
       <DependentUpon>AddRescourcePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddSuplier.xaml.cs">
+      <DependentUpon>AddSuplier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddUserPage.xaml.cs">
       <DependentUpon>AddUserPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddRescourcePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSuplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
