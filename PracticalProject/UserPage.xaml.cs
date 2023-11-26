@@ -20,7 +20,6 @@ namespace PracticalProject
     /// </summary>
     public partial class UserPage : Page
     {
-        Resource resource = new Resource();
         public UserPage()
         {
             InitializeComponent();
@@ -29,26 +28,17 @@ namespace PracticalProject
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             
-                NavigationService.Navigate(new AddRescourcePage());
+                
             
         }
         private void DecreaseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataG.SelectedItem != null)
-            {
-                resource.SetSelectedRescource(DataG.SelectedItem as Resource);
-                NavigationService.Navigate(new DecreaseResourcePage());
-            }
-            else
-            {
-                MessageBox.Show("Выберите значение в таблице");
-            }
+            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            Resource resource = new Resource();
-            DataG.ItemsSource = resource.GetListOfAllResources();
+            
         }
     }
 }

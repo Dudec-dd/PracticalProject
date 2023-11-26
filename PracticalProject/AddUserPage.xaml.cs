@@ -75,7 +75,7 @@ namespace PracticalProject
             {
                 User user = new User(NameTBox.Text, SurNameTBox.Text, DateTime.Parse(DateTBox.Text), LoginTBox.Text, PasswordTBox.Text, roleCBox.SelectedItem.ToString());
                 user.addUserInDataBase();
-                NavigationService.Navigate(new AdminPage());
+                MessageBox.Show("Готово!");
             }
             else
             {
@@ -88,10 +88,16 @@ namespace PracticalProject
         {
             List<string> strings = new List<string>();
             strings.Add("User");
-            strings.Add("Manager");
-            strings.Add("Admin");
+            strings.Add("Moderator");
+            strings.Add("Org");
+            strings.Add("Jury");
             roleCBox.ItemsSource = strings;
             roleCBox.SelectedIndex = 0;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

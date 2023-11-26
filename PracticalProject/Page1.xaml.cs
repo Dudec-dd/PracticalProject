@@ -13,8 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using System.Data.SqlClient;
 using System.Data;
 
 namespace PracticalProject
@@ -32,17 +30,20 @@ namespace PracticalProject
         //NavigationService.Navigate(new UserPage());
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            MessageBox.Show("123");
+            if(user.IsUserInDB(LoginTBox.Text, PasswordTBox.Text))
+                User.CurrentUser = user.FindUser(LoginTBox.Text, PasswordTBox.Text);
             switch (user.GetUserRole(LoginTBox.Text, PasswordTBox.Text))
             {
-                case "Admin":
+                case "Org":
                     NavigationService.Navigate(new AdminPage());
                     break;
-                case "Manager":
+                case "Moderartor":
                     NavigationService.Navigate(new ManagerPage());
                     break;
                 case "User":
+                    NavigationService.Navigate(new UserPage());
+                    break;
+                case "Jury":
                     NavigationService.Navigate(new UserPage());
                     break;
             }
