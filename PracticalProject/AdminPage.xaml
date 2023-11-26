@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <Grid Background="Black" Loaded="Grid_Loaded">
+    <Grid Background="BurlyWood" Loaded="Grid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
@@ -33,7 +33,7 @@
             <ColumnDefinition Width="8"/>
 
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Content="Таблица пользователей" FontFamily="Arial" FontSize="30" Foreground="#FFEC0E0E" ></Label>
+        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Content="Таблица организатора" FontFamily="Arial" FontSize="30" Foreground="#FFEC0E0E" ></Label>
         <DataGrid Name="DataG" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="5" IsReadOnly="True"/>
         <Button Click = "AddButton_Click" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" Content="Добавить" Height="62" VerticalAlignment="Top"/>
         <Button Click = "RemoveButton_Click" Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="2" Content="Удалить"></Button>

@@ -27,27 +27,17 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddSuplier());
+            
         }
 
         private void RemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataG.SelectedItem != null)
-            {
-                Suplier suplier = DataG.SelectedItem as Suplier;
-                suplier.removeSuplierFromDataBase(suplier.organizationName, suplier.resource);
-                DataG.ItemsSource = suplier.GetListOfAllSupliers();
-            }
-            else
-            {
-                MessageBox.Show("Выберите значение в таблице");
-            }
+            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            Suplier suplier = new Suplier();
-            DataG.ItemsSource = suplier.GetListOfAllSupliers();
+            
         }
     }
 }

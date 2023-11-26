@@ -25,8 +25,19 @@ namespace PracticalProject
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new Page1();
-            
+            MainFrame.Content = new AddPage();
+            DateTime dateTime = DateTime.Now;
+            User.users.Add(new User("igor", "igorev", dateTime, "Login", "321", "Jury"));
+            User.users.Add(new User("Egor", "igorev", dateTime, "Login", "312", "Moderator"));
+            User.users.Add(new User("Vanya", "igorev", dateTime, "Login", "132", "User"));
+            User.users.Add(new User("Lena", "igorev", dateTime, "Login", "123", "Org"));
+
+            new Event("A", "Games", User.users[0], User.users[3]);
+            Event.Events[0].AddModeratorToEvent(User.users[1]);
+            Event.Events[0].AddUserToEvent(User.users[2]);
+            Event.Events[0].AddUserToEvent(User.users[3]);
+
+
         }
     }
 }

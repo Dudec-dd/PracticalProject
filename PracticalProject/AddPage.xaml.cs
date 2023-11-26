@@ -25,9 +25,19 @@ namespace PracticalProject
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new Page1());
+        }
 
+        private void RegBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddUserPage());
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            DGField.ItemsSource = Event.ShowEvents();
         }
     }
 }

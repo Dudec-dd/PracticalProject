@@ -41,7 +41,7 @@ namespace PracticalProject
             if(DataG.SelectedItem != null) { 
             User selectedUser = DataG.SelectedItem as User;
             selectedUser.removeUserFromDataBase(selectedUser.login,selectedUser.password);
-                DataG.ItemsSource = selectedUser.GetListOfAllUsers();
+                DataG.ItemsSource = User.users;
                 MessageBox.Show("Пользователь удалён!");
             }
             else
@@ -55,7 +55,7 @@ namespace PracticalProject
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             User user = new User();
-            DataG.ItemsSource = user.GetListOfAllUsers();
+            DataG.ItemsSource = User.users;
         }
     }
 
