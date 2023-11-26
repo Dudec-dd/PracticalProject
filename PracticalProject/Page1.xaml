@@ -36,5 +36,6 @@
         <TextBox Name="LoginTBox" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" FontSize="17" FontFamily="Arial" VerticalAlignment="Top"></TextBox>
         <Label Content="Password" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Bottom"></Label>
         <Label Content="Login" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="17" FontFamily="Arial" VerticalAlignment="Bottom"></Label>
+        <Button x:Name="BackBtn" Content="Назад" Grid.Column="7" Grid.Row="7" FontSize="17" FontFamily="Arial" Click="BackBtn_Click"></Button>
     </Grid>
 </Page>

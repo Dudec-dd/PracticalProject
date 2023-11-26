@@ -22,6 +22,8 @@ namespace PracticalProject
         public string role { get; set; }
         public static List<User> users = new List<User>();
         public static User CurrentUser;
+        public static Event EventToAdd;
+        public static Event EventToEdit;
         public Dictionary<string, int> UserScore;
         public User(string n, string sN, DateTime birthD, string l, string psw, string r)
         {
@@ -38,7 +40,7 @@ namespace PracticalProject
         }
         public User FindUser(string login, string password)
         {
-            foreach (var user in users)
+            foreach (var user in User.users)
             {
                 if (user.login == login && user.password == password)
                 {
@@ -57,6 +59,43 @@ namespace PracticalProject
                 }
             }
             return false;
+        }
+        public static User GetUser(string login)
+        {
+            foreach (var item in User.users)
+            {
+                if (item.login == login)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        
+        public static List<User> GetListOfOrgs()
+        {
+            List<User> users = new List<User>();
+            foreach (var item in User.users)
+            {
+                if (item.role == "Org")
+                {
+                    users.Add(item);
+                }
+            }
+            return users;
+        }
+        public static List<User> GetListOfJury()
+        {
+            List<User> users = new List<User>();
+            foreach(var item in User.users)
+            {
+                if(item.role == "Jury")
+                {
+                    users.Add(item);
+                }
+            }
+            return users;
+
         }
         public void addUserInDataBase()
         {

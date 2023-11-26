@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PracticalProject
 {
@@ -25,17 +26,36 @@ namespace PracticalProject
             EventOrg = org;
             Events.Add(this);
         }
-
+        
         public void AddUserToEvent(User user)
         {
             if(!EventUsers.Contains(user))
             EventUsers.Add(user);
+            else
+            {
+                MessageBox.Show("Этот пользователь уже являетесь участником данного мероприятия!");
+            }
         }
-        
+        public static Event GetEventByName(string name)
+        {
+            foreach(Event e in Events)
+            {
+                if(e.EventName == name) return e;
+            }
+            return null;
+        }
         public void AddModeratorToEvent(User user)
         {
-            
-            if (user.role == "Moderator"&& !EventModerators.Contains(user)) EventModerators.Add(user);
+
+            if (user.role == "Moderator" && !EventModerators.Contains(user))
+            {
+                EventModerators.Add(user);
+                MessageBox.Show("Готово!");
+            }
+            else
+            {
+                MessageBox.Show("Вы уже являетесь модератором данного мероприятия!");
+            }
         }
 
         public void AddActivity(Activity activity) 
@@ -63,6 +83,10 @@ namespace PracticalProject
             if (list.Count > 0)
                 return list.Aggregate((a, b) => a + ", " + b);
             return "";
+        }
+        public void RemoveEvent()
+        {
+            Events.Remove(this);
         }
         public string EventModeratorsToString()
         {
