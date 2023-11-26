@@ -34,29 +34,38 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddUserPage());
+            NavigationService.Navigate(new AddEventAndActivity());
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             if(DataG.SelectedItem != null) { 
-            User selectedUser = DataG.SelectedItem as User;
-            selectedUser.removeUserFromDataBase(selectedUser.login,selectedUser.password);
-                DataG.ItemsSource = User.users;
+                User selectedUser = DataG.SelectedItem as User;
+                selectedUser.removeUserFromDataBase(selectedUser.login,selectedUser.password);
                 MessageBox.Show("Пользователь удалён!");
+                DataG.ItemsSource = new List<User>();
+                DataG.ItemsSource = User.users;
             }
             else
             {
                 MessageBox.Show("Выберите значение в таблице");
             }
+            
+            DataG.ItemsSource = User.users;
         }
 
         
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            User user = new User();
             DataG.ItemsSource = User.users;
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+       
     }
 
 }

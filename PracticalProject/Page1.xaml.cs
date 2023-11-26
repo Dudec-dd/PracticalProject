@@ -37,7 +37,7 @@ namespace PracticalProject
                 case "Org":
                     NavigationService.Navigate(new AdminPage());
                     break;
-                case "Moderartor":
+                case "Moderator":
                     NavigationService.Navigate(new ManagerPage());
                     break;
                 case "User":
@@ -48,6 +48,10 @@ namespace PracticalProject
                     break;
             }
         }
-        
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

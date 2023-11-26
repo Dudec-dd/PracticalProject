@@ -27,17 +27,36 @@ namespace PracticalProject
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            EventToShow even = DataG.SelectedItem as EventToShow;
+            if (even != null)
+            {
+                Event ev = Event.GetEventByName(even.Название);
+                User.EventToAdd = ev;
+            }
+            NavigationService.Navigate(new AddUserToEvent());
         }
 
-        private void RemButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.GoBack();
+
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            DataG.ItemsSource = Event.ShowEvents();
+        }
+
+        private void RemButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            EventToShow even = DataG.SelectedItem as EventToShow;       
+            if (even != null)
+            {
+                Event ev = Event.GetEventByName(even.Название);
+                ev.AddModeratorToEvent(User.CurrentUser);
+            }
+            DataG.ItemsSource = Event.ShowEvents();
         }
     }
 }

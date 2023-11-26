@@ -39,7 +39,7 @@ namespace PracticalProject
 
         private void LoginTBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (LoginTBox.Text == "Введите логин")
+            if (LoginTBox.Text == "Введите логин" || LoginTBox.Text == "Такой логин уже имеется")
                 LoginTBox.Text = "";
         }
 
@@ -61,6 +61,13 @@ namespace PracticalProject
 
         private void LoginTBox_LostFocus(object sender, RoutedEventArgs e)
         {
+            foreach (var item in User.users)
+            {
+                if (item.login == LoginTBox.Text)
+                {
+                    LoginTBox.Text = "Такой логин уже имеется";
+                }
+            }
             if (LoginTBox.Text == "") LoginTBox.Text = "Введите логин";
         }
 
@@ -71,7 +78,8 @@ namespace PracticalProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (NameTBox.Text != "" && SurNameTBox.Text != "" && DateTBox.Text != "" && LoginTBox.Text != "" && PasswordTBox.Text != "" && roleCBox.SelectedItem.ToString() != "")
+            
+            if (NameTBox.Text != "" && SurNameTBox.Text != "" && DateTBox.Text != "" && LoginTBox.Text != ""&& LoginTBox.Text!= "Такой логин уже имеется" && PasswordTBox.Text != "" && roleCBox.SelectedItem.ToString() != "")
             {
                 User user = new User(NameTBox.Text, SurNameTBox.Text, DateTime.Parse(DateTBox.Text), LoginTBox.Text, PasswordTBox.Text, roleCBox.SelectedItem.ToString());
                 user.addUserInDataBase();

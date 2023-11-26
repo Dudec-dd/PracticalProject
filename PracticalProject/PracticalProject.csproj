@@ -76,8 +76,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Activity.cs" />
+    <Compile Include="AddEventAndActivity.xaml.cs">
+      <DependentUpon>AddEventAndActivity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddUserPage.xaml.cs">
       <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddUserToEvent.xaml.cs">
+      <DependentUpon>AddUserToEvent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Event.cs" />
     <Compile Include="EventToShow.cs" />
@@ -88,11 +94,20 @@
     <Compile Include="UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserToShow.cs" />
+    <Page Include="AddEventAndActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddUserToEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
